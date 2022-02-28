@@ -27,3 +27,6 @@ echo "==> Fat Sentry started!"
 while [ "$(curl -s --request GET http://127.0.0.1:9000/_health/)" = "ok" ]; do
     sleep 1
 done
+
+# message before exiting
+echo "==> Health check failed! Exiting..."
