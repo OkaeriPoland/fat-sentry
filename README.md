@@ -49,7 +49,7 @@ b7f6dd1661e1   okaeri/fat-sentry:22.2.0   "/usr/local/bin/entr…"   17 minutes 
 Expect about 10 minutes for clean startup and about a minute for the latter ones.
 
 ```console
-docker run --privileged -p 9000:9000 -d --name sentry okaeri/fat-sentry:22.2.0-2
+docker run --privileged -p 9000:9000 -d --name sentry okaeri/fat-sentry:22.2.0-3
 ```
 
 ## Environment variables
