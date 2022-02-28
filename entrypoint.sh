@@ -24,6 +24,6 @@ fi
 
 # watch sentry for being alive
 echo "==> Fat Sentry started!"
-while ! curl -s --head  --request GET http://127.0.0.1:9000 | grep "200 OK" > /dev/null; do
+while [ "$(curl -s --request GET http://127.0.0.1:9000/_health/)" = "ok" ]; do
     sleep 1
 done
