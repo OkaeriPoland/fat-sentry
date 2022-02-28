@@ -71,4 +71,4 @@ What? Do you really expect it to be that easy?
 
 ## Backups
 
-You will surely figure it out! Let us know if you do!**
+You will surely figure it out! Let us know if you do!
