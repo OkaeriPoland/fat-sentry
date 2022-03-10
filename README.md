@@ -49,7 +49,15 @@ b7f6dd1661e1   okaeri/fat-sentry:22.2.0   "/usr/local/bin/entr…"   17 minutes 
 Expect about 10 minutes for clean startup and about a minute for the latter ones.
 
 ```console
-docker run --privileged -p 9000:9000 -d --name sentry okaeri/fat-sentry:22.2.0-3
+# create volumes
+docker volume create sentry-dind
+docker volume create sentry-data
+# create container
+docker run --privileged \
+ -p 9000:9000 \
+ --mount source=sentry-dind,target=/var/lib/docker \
+ --mount source=sentry-data,target=/sentry \
+ -d --name sentry okaeri/fat-sentry:22.2.0-3
 ```
 
 ## Environment variables
@@ -63,7 +71,9 @@ ENV SENTRY_ADMIN_PASSWORD=admin
 
 ## Persistent storage
 
-Just bind your volume on `/var/lib/docker`.
+Current persistent storage is a bit of crude as it requires storing the whole docker layer (binding volume on `/var/lib/docker`).
+Main reason for this is we don't have to track changes sentry makes in theirs volumes, also container recreation does 
+not require lengthy installation process each time.
 
 ## Updating
 
