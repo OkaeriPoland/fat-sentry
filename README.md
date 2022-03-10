@@ -51,12 +51,12 @@ Expect about 10 minutes for clean startup and about a minute for the latter ones
 ```console
 # create volumes
 docker volume create sentry-dind
-docker volume create sentry-data
+docker volume create sentry-lib
 # create container
 docker run --privileged \
  -p 9000:9000 \
  --mount source=sentry-dind,target=/var/lib/docker \
- --mount source=sentry-data,target=/sentry \
+ --mount source=sentry-lib,target=/sentry \
  -d --name sentry okaeri/fat-sentry:22.2.0-3
 ```
 
