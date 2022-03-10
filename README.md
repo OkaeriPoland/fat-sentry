@@ -86,7 +86,7 @@ What? Do you really expect it to be that easy? It actually probably is, at least
 
 ## Backups
 
-Adapted to DIND from [Sentry help page on Self-Hosted Backup & Restore](https://develop.sentry.dev/self-hosted/backup/#quick-backup).
+Adapted to DIND from [Sentry help page on Self-Hosted Backup & Restore](https://develop.sentry.dev/self-hosted/backup/).
 
 ### Quick Backup
 
@@ -105,6 +105,7 @@ You may need to remove non-json artifacts from the `backup.json` file, see e.g. 
 #### Restore
 
 ```
+console
 docker cp backup.json sentry:/sentry/sentry/backup.json
 docker exec -it sentry /bin/bash -c 'docker-compose run --rm -T web import /etc/sentry/backup.json'
 ```
