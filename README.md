@@ -77,8 +77,40 @@ not require lengthy installation process each time.
 
 ## Updating
 
-What? Do you really expect it to be that easy?
+What? Do you really expect it to be that easy? It actually probably is, at least in theory:
+1) Backup your installation (best chances with quick backup).
+2) Test restore on current installation to check if everything is working.
+3) Remove fat-sentry container and volumes.
+4) Create fat-sentry container with new version of the image.
+5) Restore backup on the new version.
 
 ## Backups
+
+Adapted to DIND from [Sentry help page on Self-Hosted Backup & Restore](https://develop.sentry.dev/self-hosted/backup/#quick-backup).
+
+### Quick Backup
+
+> If you need a quick way to backup and restore your Sentry instance and you don't need historical event data, 
+> you can use the built in export and import commands. These commands will save and load all project and user 
+> data, but will not contain any event data.
+
+#### Backup
+```console
+docker exec -it sentry /bin/bash -c 'docker-compose run --rm -T -e SENTRY_LOG_LEVEL=CRITICAL web export > /sentry/sentry/backup.json'
+docker exec -it sentry cat /sentry/sentry/backup.json > backup.json
+```
+
+You may need to remove non-json artifacts from the `backup.json` file, see e.g. [sentry#30396](https://github.com/getsentry/sentry/issues/30396).
+
+#### Restore
+
+```
+docker cp backup.json sentry:/sentry/sentry/backup.json
+docker exec -it sentry /bin/bash -c 'docker-compose run --rm -T web import /etc/sentry/backup.json'
+```
+
+Failing with `django.core.serializers.base.DeserializationError`? Check your `backup.json` for non-json elements like `Updating certificates in /etc/ssl/certs...` and other log lines.
+
+### Full Backup
 
 You will surely figure it out! Let us know if you do!
