@@ -104,8 +104,7 @@ You may need to remove non-json artifacts from the `backup.json` file, see e.g. 
 
 #### Restore
 
-```
-console
+```console
 docker cp backup.json sentry:/sentry/sentry/backup.json
 docker exec -it sentry /bin/bash -c 'docker-compose run --rm -T web import /etc/sentry/backup.json'
 ```
