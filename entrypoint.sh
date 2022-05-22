@@ -19,7 +19,7 @@ if [ "$create_user" = true ]; then
   echo "==> Creating superuser..."
    # apparently we can't have nice things so here it goes!
   sentry_web=$(docker ps -q -f name=sentry-self-hosted-web-)
-  docker exec "$sentry_web" /bin/bash -c "yes | sentry createuser --superuser --email ""$SENTRY_ADMIN_EMAIL"" --password ""$SENTRY_ADMIN_PASSWORD"""
+  docker exec "$sentry_web" /bin/bash -c "yes | sentry createuser --superuser --email ""$SENTRY_INIT_ADMIN_EMAIL"" --password ""$SENTRY_INIT_ADMIN_PASSWORD"""
 fi
 
 # watch sentry for being alive

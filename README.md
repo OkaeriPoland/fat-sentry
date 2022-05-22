@@ -55,9 +55,11 @@ docker volume create sentry-lib
 # create container
 docker run --privileged \
  -p 9000:9000 \
+ -e SENTRY_INIT_ADMIN_EMAIL=admin@example.com \
+ -e SENTRY_INIT_ADMIN_PASSWORD=admin \
  --mount source=sentry-dind,target=/var/lib/docker \
  --mount source=sentry-lib,target=/sentry \
- -d --name sentry okaeri/fat-sentry:22.2.0-3
+ -d --name sentry okaeri/fat-sentry:22.5.0
 ```
 
 ## Environment variables
@@ -65,8 +67,8 @@ docker run --privileged \
 Remember: Only applicable for the first (install) startup!
 
 ```dockerfile
-ENV SENTRY_ADMIN_EMAIL=admin@example.com
-ENV SENTRY_ADMIN_PASSWORD=admin
+ENV SENTRY_INIT_ADMIN_EMAIL=admin@example.com
+ENV SENTRY_INIT_ADMIN_PASSWORD=admin
 ```
 
 ## Persistent storage
