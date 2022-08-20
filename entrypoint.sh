@@ -2,6 +2,13 @@
 set -e
 export CI=1
 create_user=false
+cd /sentry
+
+# install sentry sources
+if [ ! -f /sentry/install.sh ]; then
+  echo "==> Installing files..."
+  cp --verbose -rf /sentrysrc/. /sentry/.
+fi
 
 # only install if no sentry containers
 if [ ! "$(docker ps -all -q -f name=sentry-self-hosted-)" ]; then
