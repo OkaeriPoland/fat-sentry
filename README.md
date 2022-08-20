@@ -59,7 +59,7 @@ docker run --privileged \
  -e SENTRY_INIT_ADMIN_PASSWORD=admin \
  --mount source=sentry-dind,target=/var/lib/docker \
  --mount source=sentry-lib,target=/sentry \
- -d --name sentry okaeri/fat-sentry:22.5.0
+ -d --name sentry okaeri/fat-sentry:22.5.0-11
 ```
 
 ## Environment variables
