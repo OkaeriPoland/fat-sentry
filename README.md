@@ -1,3 +1,7 @@
+# Deprecation notice
+
+After further testing we have decided that Sentry is not for us and migrated to [GlitchTip](https://glitchtip.com/), which allows us to achieve error collection over the same protocol, but with only about ~1 GB of memory used and negligible CPU usage in production, which is almost free in comparison to Sentry idling at ~6 GB and eating up to ~1 vCPU doing _nothing_. Fat Sentry will not be actively maintained, nor should you use it anyway.
+
 # Fat Sentry
 
 Don't you hate running 30 containers just for Sentry? We do. We really do!
